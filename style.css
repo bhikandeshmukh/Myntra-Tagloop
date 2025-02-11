@@ -1,12 +1,28 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #f8f9fa;
 }
 
-.header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+.card {
+    border-radius: 15px;
+}
+
+.card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-footer {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.log-area {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
 }
 
 .file-label {
@@ -15,12 +31,4 @@ body {
 
 .file-label.selected {
     color: green;
-}
-
-.log-area {
-    height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ced4da;
-    padding: 10px;
-    background-color: white;
 }

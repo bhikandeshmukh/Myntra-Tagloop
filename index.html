@@ -4,58 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tagloop by Bhikan</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="login-container" class="container mt-5">
-        <div class="header">
-            <h1>Login to Tagloop PDF Processor</h1>
-        </div>
-        <div class="mt-4">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username">
+        <div class="card shadow-lg">
+            <div class="card-header text-center bg-success text-white">
+                <h1>Login to Tagloop PDF Processor</h1>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password">
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <button id="loginBtn" class="btn btn-success w-100">Login</button>
+                <div id="loginError" class="text-danger mt-2" style="display: none;">Invalid username or password</div>
             </div>
-            <button id="loginBtn" class="btn btn-success">Login</button>
-            <div id="loginError" class="text-danger mt-2" style="display: none;">Invalid username or password</div>
         </div>
     </div>
 
     <div id="app-container" class="container mt-5" style="display: none;">
-        <div class="header">
-            <h1>Tagloop PDF Processor</h1>
-        </div>
-        <div class="mt-4">
-            <div class="form-group">
-                <label for="pdfUpload">Upload PDF file:</label>
-                <input type="file" class="form-control-file" id="pdfUpload">
-                <small id="pdfFileLabel" class="form-text file-label">No PDF file selected</small>
+        <div class="card shadow-lg">
+            <div class="card-header text-center bg-success text-white">
+                <h1>Tagloop PDF Processor</h1>
             </div>
-            <div class="form-group">
-                <label for="excelUpload">Upload Excel file:</label>
-                <input type="file" class="form-control-file" id="excelUpload">
-                <small id="excelFileLabel" class="form-text file-label">No Excel file selected</small>
+            <div class="card-body">
+                <div class="form-group mb-3">
+                    <label for="pdfUpload" class="form-label">Upload PDF file:</label>
+                    <input type="file" class="form-control" id="pdfUpload">
+                    <small id="pdfFileLabel" class="form-text text-danger">No PDF file selected</small>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="excelUpload" class="form-label">Upload Excel file:</label>
+                    <input type="file" class="form-control" id="excelUpload">
+                    <small id="excelFileLabel" class="form-text text-danger">No Excel file selected</small>
+                </div>
+                <button id="processBtn" class="btn btn-success w-100">Process</button>
             </div>
-            <button id="processBtn" class="btn btn-success">Process</button>
-        </div>
-        <div class="progress my-4" style="display: none;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
-        </div>
-        <div>
-            <label>Log:</label>
-            <div class="log-area" id="logArea"></div>
-        </div>
-        <div class="mt-4" id="downloadSection" style="display: none;">
-            <button id="downloadBtn" class="btn btn-info">Download Processed PDF</button>
+            <div class="progress my-4" style="display: none;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+            </div>
+            <div class="card-body">
+                <label>Log:</label>
+                <div class="log-area" id="logArea"></div>
+            </div>
+            <div class="card-footer text-center" id="downloadSection" style="display: none;">
+                <button id="downloadBtn" class="btn btn-info">Download Processed PDF</button>
+            </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js"></script>
