@@ -1,0 +1,26 @@
+body {
+    background-color: #f0f0f0;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.file-label {
+    color: red;
+}
+
+.file-label.selected {
+    color: green;
+}
+
+.log-area {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    background-color: white;
+}
