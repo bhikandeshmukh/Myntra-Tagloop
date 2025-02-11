@@ -9,52 +9,65 @@
 </head>
 <body>
     <div id="login-container" class="container mt-5">
-        <div class="card shadow-lg">
-            <div class="card-header text-center bg-success text-white">
-                <h1>Login to Tagloop PDF Processor</h1>
-            </div>
-            <div class="card-body">
-                <div class="form-group mb-3">
-                    <label for="username" class="form-label">Username:</label>
-                    <input type="text" class="form-control" id="username">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header text-center bg-success text-white">
+                        <h1>Login to Tagloop PDF Processor</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="username" class="form-label">Username:</label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <button id="loginBtn" class="btn btn-success w-100">Login</button>
+                        <div id="loginError" class="text-danger mt-2" style="display: none;">Invalid username or password</div>
+                    </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="password" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="password">
-                </div>
-                <button id="loginBtn" class="btn btn-success w-100">Login</button>
-                <div id="loginError" class="text-danger mt-2" style="display: none;">Invalid username or password</div>
             </div>
         </div>
     </div>
 
     <div id="app-container" class="container mt-5" style="display: none;">
-        <div class="card shadow-lg">
-            <div class="card-header text-center bg-success text-white">
-                <h1>Tagloop PDF Processor</h1>
+        <div class="row">
+            <div class="col-12 text-end">
+                <button id="logoutBtn" class="btn btn-danger">Logout</button>
             </div>
-            <div class="card-body">
-                <div class="form-group mb-3">
-                    <label for="pdfUpload" class="form-label">Upload PDF file:</label>
-                    <input type="file" class="form-control" id="pdfUpload">
-                    <small id="pdfFileLabel" class="form-text text-danger">No PDF file selected</small>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-8 mx-auto">
+                <div class="card shadow-lg">
+                    <div class="card-header text-center bg-success text-white">
+                        <h1>Tagloop PDF Processor</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="pdfUpload" class="form-label">Upload PDF file:</label>
+                            <input type="file" class="form-control" id="pdfUpload">
+                            <small id="pdfFileLabel" class="form-text text-danger">No PDF file selected</small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="excelUpload" class="form-label">Upload Excel file:</label>
+                            <input type="file" class="form-control" id="excelUpload">
+                            <small id="excelFileLabel" class="form-text text-danger">No Excel file selected</small>
+                        </div>
+                        <button id="processBtn" class="btn btn-success w-100">Process</button>
+                    </div>
+                    <div class="progress my-4" style="display: none;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+                    </div>
+                    <div class="card-body">
+                        <label>Log:</label>
+                        <div class="log-area" id="logArea"></div>
+                    </div>
+                    <div class="card-footer text-center" id="downloadSection" style="display: none;">
+                        <button id="downloadBtn" class="btn btn-info">Download Processed PDF</button>
+                    </div>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="excelUpload" class="form-label">Upload Excel file:</label>
-                    <input type="file" class="form-control" id="excelUpload">
-                    <small id="excelFileLabel" class="form-text text-danger">No Excel file selected</small>
-                </div>
-                <button id="processBtn" class="btn btn-success w-100">Process</button>
-            </div>
-            <div class="progress my-4" style="display: none;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
-            </div>
-            <div class="card-body">
-                <label>Log:</label>
-                <div class="log-area" id="logArea"></div>
-            </div>
-            <div class="card-footer text-center" id="downloadSection" style="display: none;">
-                <button id="downloadBtn" class="btn btn-info">Download Processed PDF</button>
             </div>
         </div>
     </div>

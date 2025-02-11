@@ -1,13 +1,13 @@
-document.getElementById('loginBtn').addEventListener('click', async function() {
+document.getElementById('loginBtn').addEventListener('click', async function () {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const loginError = document.getElementById('loginError');
-    
+
     const response = await fetch('users.json');
     const users = await response.json();
-    
+
     const user = users.find(user => user.username === username && user.password === password);
-    
+
     if (user) {
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('app-container').style.display = 'block';
@@ -16,7 +16,12 @@ document.getElementById('loginBtn').addEventListener('click', async function() {
     }
 });
 
-document.getElementById('pdfUpload').addEventListener('change', function() {
+document.getElementById('logoutBtn').addEventListener('click', function () {
+    document.getElementById('app-container').style.display = 'none';
+    document.getElementById('login-container').style.display = 'block';
+});
+
+document.getElementById('pdfUpload').addEventListener('change', function () {
     const fileLabel = document.getElementById('pdfFileLabel');
     if (this.files.length > 0) {
         fileLabel.textContent = `PDF file selected: ${this.files[0].name}`;
@@ -27,7 +32,7 @@ document.getElementById('pdfUpload').addEventListener('change', function() {
     }
 });
 
-document.getElementById('excelUpload').addEventListener('change', function() {
+document.getElementById('excelUpload').addEventListener('change', function () {
     const fileLabel = document.getElementById('excelFileLabel');
     if (this.files.length > 0) {
         fileLabel.textContent = `Excel file selected: ${this.files[0].name}`;
@@ -38,7 +43,7 @@ document.getElementById('excelUpload').addEventListener('change', function() {
     }
 });
 
-document.getElementById('processBtn').addEventListener('click', async function() {
+document.getElementById('processBtn').addEventListener('click', async function () {
     const pdfFile = document.getElementById('pdfUpload').files[0];
     const excelFile = document.getElementById('excelUpload').files[0];
     const logArea = document.getElementById('logArea');
@@ -67,7 +72,7 @@ document.getElementById('processBtn').addEventListener('click', async function()
         progressBar.style.display = 'none';
     }
 
-    document.getElementById('downloadBtn').addEventListener('click', function() {
+    document.getElementById('downloadBtn').addEventListener('click', function () {
         const blob = new Blob([processedPdfBytes], { type: 'application/pdf' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
@@ -115,7 +120,7 @@ async function addTagloopToLabel(file, excelData) {
         const shippingPage = pages[i];
         const invoicePage = await pdf.getPage(i + 2);
         const invoiceText = await getTextFromPage(invoicePage);
-        
+
         for (const invoiceNum in excelData) {
             if (invoiceText.includes(invoiceNum)) {
                 const tagloopText = `TagLoop: ${excelData[invoiceNum].tagloop}`;

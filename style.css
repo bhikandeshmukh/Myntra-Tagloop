@@ -1,5 +1,6 @@
 body {
     background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
 }
 
 .card {
@@ -31,4 +32,15 @@ body {
 
 .file-label.selected {
     color: green;
+}
+
+#login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app-container {
+    margin-top: 50px;
 }
