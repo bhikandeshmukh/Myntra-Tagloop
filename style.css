@@ -5,6 +5,7 @@ body {
 
 .card {
     border-radius: 15px;
+    transition: all 0.3s ease;
 }
 
 .card-header {
@@ -17,13 +18,30 @@ body {
     border-bottom-right-radius: 15px;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
 .log-area {
-    height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ced4da;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 5px;
+    height: 250px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+
+.log-area .success {
+    color: #28a745;
+}
+
+.log-area .error {
+    color: #dc3545;
+}
+
+.log-area .info {
+    color: #17a2b8;
 }
 
 .file-label {
@@ -43,4 +61,30 @@ body {
 
 #app-container {
     margin-top: 50px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #e9ecef;
+}
+
+.progress {
+    height: 25px;
+    border-radius: 12px;
+    margin: 20px;
+}
+
+.progress-bar {
+    background-color: #28a745;
+}
+
+#downloadBtn {
+    transition: all 0.3s ease;
+}
+
+#downloadBtn:hover {
+    transform: scale(1.05);
 }

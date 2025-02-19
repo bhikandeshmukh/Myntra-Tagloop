@@ -3,16 +3,33 @@ document.getElementById('loginBtn').addEventListener('click', async function () 
     const password = document.getElementById('password').value;
     const loginError = document.getElementById('loginError');
 
-    const response = await fetch('users.json');
-    const users = await response.json();
+    const hashedPassword = await hashPassword(password);
+    
+    try {
+        const response = await fetch('users.json');
+        if (!response.ok) throw new Error('Login service unavailable');
+        
+        const users = await response.json();
+        const user = users.find(user => 
+            user.username === username && 
+            user.password === hashedPassword
+        );
 
-    const user = users.find(user => user.username === username && user.password === password);
-
-    if (user) {
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('app-container').style.display = 'block';
-    } else {
-        loginError.style.display = 'block';
+        if (user) {
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('username', username);
+            
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('app-container').style.display = 'block';
+            document.getElementById('currentUser').textContent = username;
+        } else {
+            loginError.style.display = 'block';
+            setTimeout(() => {
+                loginError.style.display = 'none';
+            }, 3000);
+        }
+    } catch (error) {
+        alert('Login service error: ' + error.message);
     }
 });
 
@@ -130,4 +147,13 @@ async function addTagloopToLabel(file, excelData) {
         }
     }
     return await pdfDoc.save();
+}
+
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
 }

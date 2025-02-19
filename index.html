@@ -47,15 +47,21 @@
                     <div class="card-body">
                         <div class="form-group mb-3">
                             <label for="pdfUpload" class="form-label">Upload PDF file:</label>
-                            <input type="file" class="form-control" id="pdfUpload">
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="pdfUpload" accept=".pdf">
+                                <button class="btn btn-outline-secondary" type="button" id="clearPdfBtn">Clear</button>
+                            </div>
                             <small id="pdfFileLabel" class="form-text text-danger">No PDF file selected</small>
                         </div>
                         <div class="form-group mb-3">
                             <label for="excelUpload" class="form-label">Upload Excel file:</label>
-                            <input type="file" class="form-control" id="excelUpload">
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="excelUpload" accept=".xlsx,.xls">
+                                <button class="btn btn-outline-secondary" type="button" id="clearExcelBtn">Clear</button>
+                            </div>
                             <small id="excelFileLabel" class="form-text text-danger">No Excel file selected</small>
                         </div>
-                        <button id="processBtn" class="btn btn-success w-100">Process</button>
+                        <button id="processBtn" class="btn btn-success w-100" disabled>Process</button>
                     </div>
                     <div class="progress my-4" style="display: none;">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
